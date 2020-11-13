@@ -1,11 +1,25 @@
-import { AppBar, Toolbar } from '@material-ui/core'
+import { AppBar, makeStyles, Toolbar } from '@material-ui/core'
 import Logo from '../components/images/Logo'
 import { useLocation, useHistory } from 'react-router-dom';
+
+const useStyles = makeStyles((theme) => ({
+  item: {
+    padding: '10px'
+    , '&:hover': {
+      backgroundColor: '#747eba'
+      , cursor: 'pointer'
+    }
+  }
+}))
 
 const adminOptions = [
   {
     text: 'View'
     , url: '/posts'
+  },
+  {
+    text: 'Create'
+    , url: '/create'
   }
 ]
 
@@ -18,11 +32,12 @@ const userOptions = [
 
 const MenuItem = ({ text, url, role }) => {
   const history = useHistory()
+  const classes = useStyles()
   const handleClick = () => {
     history.push(url, { role })
   }
   return (
-    <div onClick={handleClick}>
+    <div onClick={handleClick} style={{ marginLeft: '30px' }} className={classes.item}>
       {text}
     </div>
   )
@@ -30,7 +45,7 @@ const MenuItem = ({ text, url, role }) => {
 
 const Menu = ({ role }) => {
   const options = role === 'admin' ? adminOptions : userOptions
-  const renderMenu = options.map((option, index) => <MenuItem key={index} text={option.text} url={options.url} role={role} />)
+  const renderMenu = options.map((option, index) => <MenuItem key={index} text={option.text} url={option.url} role={role} />)
   return (
     <>
       {renderMenu}

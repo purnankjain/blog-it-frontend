@@ -7,6 +7,7 @@ const useStyles = makeStyles(() => ({
   main: {
     height: '64px'
     , overflow: 'hidden'
+    , cursor: 'pointer'
     , '& img': {
       height: '200px'
       , marginTop: '-68px'

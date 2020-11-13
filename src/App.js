@@ -1,6 +1,7 @@
 import { createMuiTheme, ThemeProvider } from '@material-ui/core';
 import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
 import './App.css';
+import CreatePost from './pages/CreatePost';
 import Home from './pages/Home';
 import Post from './pages/Post';
 import Posts from './pages/Posts';
@@ -24,6 +25,7 @@ function App() {
         <Switch>
           <Route exact path='/' component={Home} />
           <Route exact path='/posts' component={Posts} />
+          <Route exact path='/create' component={CreatePost} />
           <Route exact path='/posts/:postId' component={Post} />
           <Route path='/' render={() => <Redirect to='/' />} />
         </Switch>
